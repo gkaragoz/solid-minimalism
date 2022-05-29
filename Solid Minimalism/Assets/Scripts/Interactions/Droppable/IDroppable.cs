@@ -1,7 +1,8 @@
-﻿namespace Interactions.Droppable
+﻿using Interactions.Carriable;
+
+namespace Interactions.Droppable
 {
-    public interface IDroppable
+    public interface IDroppable : ICarriable
     {
-        void OnDropped();
     }
 }

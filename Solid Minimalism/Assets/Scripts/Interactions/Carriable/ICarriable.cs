@@ -4,6 +4,7 @@ namespace Interactions.Carriable
 {
     public interface ICarriable
     {
-        void OnCarried(ICarrier carrierObject);
+        void OnTake(ICarrier carrierObject);
+        void OnRelease();
     }
 }

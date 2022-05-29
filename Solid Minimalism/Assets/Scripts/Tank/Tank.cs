@@ -1,6 +1,4 @@
-﻿using Interactions.Carriable;
-using Tank.Carrier;
-using Tank.Motor;
+﻿using Tank.Motor;
 using UnityEngine;
 
 namespace Tank
@@ -9,12 +7,10 @@ namespace Tank
     public class Tank : MonoBehaviour, ITank
     {
         private ITankMotor _tankMotor;
-        private ITankCarrier _tankCarrier;
         
         private void Awake()
         {
             _tankMotor = GetComponent<ITankMotor>();
-            _tankCarrier = GetComponent<ITankCarrier>();
         }
 
         public void MoveTo(Vector2 input)

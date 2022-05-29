@@ -1,4 +1,5 @@
-﻿using Input.InputReceiver;
+﻿using Input;
+using Input.Controller;
 using Tank;
 using UnityEngine;
 
@@ -6,9 +7,9 @@ namespace Player
 {
     public interface IPlayer
     {
-        Camera Camera { get; }
-        ITank Tank { get; }
-        IInputReceiver MovementInput { get; }
-        IInputReceiver RotationInput { get; }
+         InputControllerType InputControllerType { get; }
+         InputController InputController { get; }
+         Camera Camera { get; }
+         ITank Tank { get; }
     }
 }
