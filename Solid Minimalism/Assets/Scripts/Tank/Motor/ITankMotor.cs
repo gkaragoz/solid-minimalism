@@ -4,8 +4,9 @@ namespace Tank.Motor
 {
     public interface ITankMotor
     {
-        Transform TankTransform { get; }
-        void MoveTo(Vector2 direction);
-        void RotateTo(Quaternion rotation);
+        float MovementSpeed { get; }
+        void MoveTo(Vector2 input);
+        void StopMovement();
+        void RotateTo(Vector2 input, Camera camera);
     }
 }

@@ -4,16 +4,40 @@ namespace Tank.Motor
 {
     public class TankMotor : MonoBehaviour, ITankMotor
     {
-        public Transform TankTransform => transform;
+        [SerializeField]
+        private float _movementSpeed = 5f;
+
+        public float MovementSpeed => _movementSpeed;
+        
+        [SerializeField] private Rigidbody2D _rigidbody;
+
+        private Vector2 _desiredDirection;
+        private Quaternion _desiredRotation;
+
+        private void FixedUpdate()
+        {
+            _rigidbody.velocity = _desiredDirection * _movementSpeed;
+            _rigidbody.SetRotation(_desiredRotation);
+        }
 
         public void MoveTo(Vector2 direction)
         {
-            TankTransform.localPosition += new Vector3(direction.x, direction.y, 0f);
+            _desiredDirection = direction;
         }
 
-        public void RotateTo(Quaternion rotation)
+        public void StopMovement()
         {
-            TankTransform.localRotation = rotation;
+            _desiredDirection = Vector2.zero;
+        }
+
+        public void RotateTo(Vector2 input, Camera camera)
+        {
+            var direction = new Vector3(input.x, input.y, 0f) - camera.WorldToScreenPoint(transform.position);
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            
+            var desiredRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            
+            _desiredRotation = desiredRotation;
         }
     }
 }

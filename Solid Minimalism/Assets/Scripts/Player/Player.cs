@@ -25,6 +25,8 @@ namespace Player
         {
             if (MovementInput.HasInput())
                 Tank.MoveTo(MovementInput.CurrentInput);
+            else
+                Tank.StopMovement();
 
             if (RotationInput.HasInput())
                 Tank.RotateTo(RotationInput.CurrentInput, Camera);

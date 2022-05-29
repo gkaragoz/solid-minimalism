@@ -2,6 +2,6 @@
 {
     public interface ISource
     {
-    
+        SourceType Type { get; }
     }
 }
